@@ -79,7 +79,7 @@ const render = function (posts) {
 
                 let delete_comment_icon = $('<i class="fas fa-minus-circle fa-lg"></i>');
                 delete_comment_icon.addClass('delete_comment_icon')
-                comment__item.addClass('comment_section')
+                comment_item.addClass('.comment_section')
 
                 // delete_c.css('position', "absolute");
                 // delete_c.css('right', "70vw");

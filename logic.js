@@ -123,6 +123,13 @@ const Tweeter = function () {
 const post_func = function () {
     let post_input_element=$('#input');
     let input_val = post_input_element.val();
+    // ameer points this problem fix with regex 
+   input_val= input_val.replace(/ /g,'');
+    console.log(" regex ",input_val.length);
+    if(input_val===''){
+        post_input_element.val('');
+        return;
+    }
 
     tweeter.addPost(input_val);
     console.log(tweeter.getPosts())
