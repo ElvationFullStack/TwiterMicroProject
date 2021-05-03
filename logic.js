@@ -1,4 +1,21 @@
 const Tweeter = function () {
+    const check_id = function () {// on time call 
+        let counterid = 0;
+        for (let p of _post_array) {
+            if (p.id) {
+                counterid++;
+            }
+        }
+        return counterid;
+    }
+    //optional we will update the counter every time we add 
+    const check_comments = () => {// on time call 
+        let count = 0
+        for (let p of _post_array) {
+            count += p.comments.length;
+        }
+        return count;
+    }
     let _post_array = [
         {
             text: "First post!",
@@ -19,53 +36,37 @@ const Tweeter = function () {
             ]
         }
     ];
-    const check_id = function () {
-        let counterid = 0;
-        for (let p of _post_array) {
-            if (p.id) {
-                counterid++;
-
-            }
-        }
-        return counterid;
-    }
-    const check_comments = () => {
-        let count = 0
-        for (let p of _post_array) {
-            count += p.comments.length;
-        }
-        return count;
-    }
-
     let postIdCounter = check_id();
     let commentIdCounter = check_comments();
+
+    //optional 
+  
+
+    
     const getPosts = function () {
         return _post_array;
 
     }
-    const addPost = function (post = 'ther are no text ') {
+    const addPost = function (post = 'there are no text ') {
 
         let text = post;
         //this is optinoal incase we have post 
         postIdCounter++;
-        let id = "p" + postIdCounter ;
+        let id = "p" + postIdCounter;
         let comment = [];
-        let obj = {
+        let new_post = {
             text: text,
             id: id,
             comment: comment
         }
-        _post_array.push(obj)
-
-
-
+        _post_array.push(new_post)
         return _post_array
         // _post_array.push()
     }
     const removePost = function (id) {
 
-        for (let obj of _post_array) {
-            if (obj.id === id) {
+        for (let post of _post_array) {
+            if (post.id === id) {
                 let deleted = _post_array.splice(id, 1);
                 console.log('deleted ', deleted)
             }
@@ -74,34 +75,24 @@ const Tweeter = function () {
     }
     const addComment = function (text, postId) {
 
-        for (let obj of _post_array) {
-            if (obj.id === postId) {
-                // console.log(" adde comment to this obj", obj)
-                console.log("counter comment", commentIdCounter)
-                if (obj.comments === undefined) {
-                    obj.comments = []
+        for (let post of _post_array) {
+
+            if (post.id === postId) {
+                if (post.comments === undefined) {
+                    post.comments = []
                 }
-                let commentObj = obj.comments;
+                let commentObj = post.comments;
                 commentIdCounter++;
-                let cId = 'c' + commentIdCounter ;
-
+                let cId = 'c' + commentIdCounter;
                 commentObj.push({ id: cId, text: text })
-
-                // console.log(obj.comments.length)
-
-
-
             }
         }
         renderer.renderposts(tweeter.getPosts())
-
-
-
     }
     const removeComment = function (postId, cId) {
-        for (let obj of _post_array) {
-            if (obj.id === postId) {
-                let commentObj = obj.comments;
+        for (let post of _post_array) {
+            if (post.id === postId) {
+                let commentObj = post.comments;
                 let ind = 0;
                 for (let c of commentObj) {
 
@@ -117,16 +108,16 @@ const Tweeter = function () {
 
     }
     return {
-        addPost, getPosts, removePost, addComment, removeComment,check_comments
+        addPost, getPosts, removePost, addComment, removeComment, check_comments
     }
 }
 const post_func = function () {
-    let post_input_element=$('#input');
+    let post_input_element = $('#input');
     let input_val = post_input_element.val();
     // ameer points this problem fix with regex 
-   input_val= input_val.replace(/ /g,'');
-    console.log(" regex ",input_val.length);
-    if(input_val===''){
+    input_val = input_val.replace(/ /g, '');
+    console.log(" regex ", input_val.length);
+    if (input_val === '') {
         post_input_element.val('');
         return;
     }

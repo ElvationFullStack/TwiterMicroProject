@@ -1,6 +1,17 @@
 body{
+  background: url('./media/a3b6413d054f7774d7a18ae8847be0a7.jpg');
+  background-repeat: no-repeat;
+  background-size: 100vw 140vh ;
   background-color: #ecf0f1;
   font-family: 'Balthazar', serif;
+}
+#title{
+  font-family: 'Pangolin', cursive;
+  color: #3498db;
+}
+.post_text{
+  font-family: 'Pangolin', cursive;
+  color: #3498db;
 }
 
 #container{
@@ -43,10 +54,17 @@ body{
 }
 
 .post{
+  background: rgba(174, 177, 171, 1);
+  /* color: #ecf0f1; */
+  position: relative;
+  display: block;
   box-shadow: 1px 1px 3px;
   margin: 10px;
   border-radius: 5px;
   padding: 10px;
+  margin-bottom: 20px;
+  /* background:#ecf0f1; */
+
 }
 
 #post:active{
