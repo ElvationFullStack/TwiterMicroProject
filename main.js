@@ -2,4 +2,5 @@
 
 const tweeter = Tweeter()
 let post_arr = tweeter.getPosts();
-render(post_arr);
+const renderer =render()
+renderer .renderposts(post_arr);

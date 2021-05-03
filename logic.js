@@ -47,7 +47,8 @@ const Tweeter = function () {
 
         let text = post;
         //this is optinoal incase we have post 
-        let id = "p" + (postIdCounter + 1);
+        postIdCounter++;
+        let id = "p" + postIdCounter ;
         let comment = [];
         let obj = {
             text: text,
@@ -81,7 +82,8 @@ const Tweeter = function () {
                     obj.comments = []
                 }
                 let commentObj = obj.comments;
-                let cId = 'c' + (commentIdCounter + 1);
+                commentIdCounter++;
+                let cId = 'c' + commentIdCounter ;
 
                 commentObj.push({ id: cId, text: text })
 
@@ -91,6 +93,7 @@ const Tweeter = function () {
 
             }
         }
+        renderer.renderposts(tweeter.getPosts())
 
 
 
@@ -110,15 +113,20 @@ const Tweeter = function () {
                 }
             }
         }
+        renderer.renderposts(tweeter.getPosts());
+
     }
     return {
         addPost, getPosts, removePost, addComment, removeComment,check_comments
     }
 }
 const post_func = function () {
-    let input_val = $('#input').val();
+    let post_input_element=$('#input');
+    let input_val = post_input_element.val();
+
     tweeter.addPost(input_val);
     console.log(tweeter.getPosts())
-    render(tweeter.getPosts());
+    post_input_element.val('');
+    renderer.renderposts(tweeter.getPosts());
     return;
 }

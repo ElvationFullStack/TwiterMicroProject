@@ -4,6 +4,7 @@ body{
 }
 
 #container{
+
   display: grid;
   grid-gap: 20px;
   padding-left: 25px;
@@ -25,6 +26,7 @@ body{
 }
 
 #posts{
+  width:50vw;
   grid-area: p;
 }
 
@@ -74,3 +76,19 @@ body{
   cursor: pointer;
   color: #e74c3c;
 }
+
+.delete_post_icon{
+  /* size: 50vw;
+   */
+   margin-right: 20px;
+}
+.comment_section{
+  position: relative;
+
+}
+.delete_comment_icon{
+  position: absolute;
+  border: #2980b9 solid 1px;
+  right:3px;
+}
+
